@@ -1,0 +1,77 @@
+# SecurityScan Configuration File
+# This file allows you to customize security scanning behavior
+
+# Scan options
+scan_dependencies: true
+scan_secrets: true
+scan_sql_injection: true
+scan_code_injection: true
+scan_frameworks: true
+scan_cryptography: true
+scan_authentication: true
+scan_xss: true
+scan_configuration: true
+
+# Performance options
+parallel_scanning: true
+max_workers: 4
+follow_symlinks: false
+
+# Filtering options
+severity_threshold: info  # critical, high, medium, low, info
+include_patterns:
+  - "*.py"
+  - "*.pyi"
+exclude_patterns:
+  - "*/__pycache__/*"
+  - "*/.git/*"
+  - "*/node_modules/*"
+  - "*/venv/*"
+  - "*/env/*"
+  - "*/virtualenv/*"
+  - "*/site-packages/*"
+  - "*/build/*"
+  - "*/dist/*"
+  - "*/tests/*"
+  - "*/test_*"
+  - "*_test.py"
+  - "*/migrations/*"
+  - "*/__init__.py"
+
+# Output options
+output_format: terminal  # terminal, html, json, sarif, markdown
+output_file: null
+colored_output: true
+verbose: false
+quiet: false
+
+# Framework-specific options
+frameworks:
+  django:
+    check_debug: true
+    check_csrf: true
+    check_security_middleware: true
+  flask:
+    check_debug: true
+    check_secret_key: true
+    check_jinja2: true
+  fastapi:
+    check_validation: true
+    check_cors: true
+    check_exposed_endpoints: true
+
+# Custom rules (examples)
+custom_rules:
+  - id: "custom-secret-pattern"
+    pattern: "SECRET_KEY.*=.*['\"](.*?)['\"]"
+    severity: high
+    title: "Custom Secret Pattern"
+    description: "Custom secret pattern detected"
+    fix: "Use environment variables for secrets"
+
+# Compliance frameworks
+compliance:
+  owasp: true
+  pci_dss: false
+  hipaa: false
+  gdpr: false

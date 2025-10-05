@@ -1,0 +1,63 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "securityscan"
+version = "1.0.0"
+authors = [
+    {name = "Sherin Joseph Roy", email = "sherin.joseph2217@gmail.com"},
+]
+description = "Comprehensive security analysis for Python projects with a single command"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.8"
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Security",
+    "Topic :: Software Development :: Quality Assurance",
+    "Topic :: Software Development :: Testing",
+    "Topic :: System :: Systems Administration",
+]
+keywords = ["security", "vulnerability", "scanning", "python", "static-analysis", "dependency-check"]
+dependencies = [
+    "click>=8.1.0",
+    "colorama>=0.4.6",
+    "rich>=13.0.0",
+    "pyyaml>=6.0",
+    "requests>=2.31.0",
+    "pip-audit>=2.6.1",
+    "cryptography>=41.0.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/Sherin-SEF-AI/security-scan"
+Repository = "https://github.com/Sherin-SEF-AI/security-scan"
+Documentation = "https://github.com/Sherin-SEF-AI/security-scan#readme"
+"Bug Reports" = "https://github.com/Sherin-SEF-AI/security-scan/issues"
+"Author LinkedIn" = "https://www.linkedin.com/in/sherin-roy-deepmost/"
+"Author GitHub" = "https://github.com/Sherin-SEF-AI"
+
+[project.scripts]
+secscan = "securityscan.cli.main:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["securityscan*"]
+
+[tool.setuptools.package-data]
+securityscan = [
+    "data/*.json",
+    "templates/*.html",
+]
+
+[tool.setuptools.exclude-package-data]
+"*" = ["*.pyc", "__pycache__", ".git*", ".DS_Store", "*.egg-info"]

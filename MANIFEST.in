@@ -1,0 +1,12 @@
+include README.md
+include LICENSE
+include requirements.txt
+include .securityscan.yml
+recursive-include securityscan *.py
+recursive-include securityscan/data *.json
+recursive-include securityscan/templates *.html
+global-exclude *.pyc
+global-exclude __pycache__
+global-exclude .git*
+global-exclude .DS_Store
+global-exclude *.egg-info
