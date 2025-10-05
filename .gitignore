@@ -132,9 +132,9 @@ dmypy.json
 *.html
 *.json
 *.sarif
-*.md
 security_report.*
 report.*
+# Note: README.md should not be ignored
 
 # IDE
 .vscode/
